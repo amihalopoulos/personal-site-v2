@@ -58,11 +58,11 @@ function App() {
           </Tree>
         </div>
       }
-        <div className="game" style={{ color: 'white', height: '500px', width: '500px' }}>
-          { game &&
-            <Game />
-          }
+      { game &&
+        <div>
+          <Game text="want to play a game?" />
         </div>
+      }
       </div>
     );
 }
