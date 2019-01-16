@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useReducer } from 'react';
-import { useSpring, animated, useTrail } from 'react-spring/hooks';
+import { useSpring, animated } from 'react-spring/hooks';
 import './Game.css'
+import useKeyPress from './keyPressHook'
 
 const size = 10
 
-
-const reducer = (state, action) => {
+const gamePieceReducer = (state, action) => {
   switch (action.type) {
     case 'CREATE':
       return {...state}
@@ -20,25 +20,11 @@ const reducer = (state, action) => {
   }
 }
 
-const useKeyPress = () => {
-  const [state, dispatch] = useReducer(reducer, {x: 50, y: 50})
-
-  useEffect( () => {
-    const handleKeyPress = ({key}) => dispatch({type: 'KEY_PRESS', payload: key})
-    dispatch({type: 'CREATE'}) // include payload: (metada about map that was created)    
-    document.addEventListener("keydown", handleKeyPress)
-    return () => document.removeEventListener("keydown", handleKeyPress)
-  }, [])
-
-  return state
-}
-
-
 const GamePiece = () => {
-  const state = useKeyPress()
+  const state = useKeyPress(gamePieceReducer, {x: 50, y: 50})
 
   return (
-    <div style={{position: 'absolute', top: state.y, left: state.x, 'height': size+'px', width: size+'px', 'backgroundColor': '#fff'}}> </div>
+    <div style={{position: 'absolute', top: state.y, left: state.x, 'height': size+'px', width: size+'px', 'backgroundColor': '#fff', 'zIndex': '100'}}> </div>
   )
 }
 
