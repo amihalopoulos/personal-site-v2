@@ -1,9 +1,10 @@
 import React, { Component, useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import { Spring } from 'react-spring'
 import Tree from './Tree'
 import Game from './Game'
+import Menu from './menu'
+import Page from './pages/page'
 // import { useSpring, animated as anim } from 'react-spring'
 
 const treeStyles = {
@@ -22,45 +23,34 @@ const typeStyles = {
 
 function App() {
   const [game, setGame] = useState(false);
+  const [section, setSection] = useState(false);
+
+  let sectionComponent;
 
   function startGame(){
     setGame(true)
   }
 
+  function showSection(e, newSection){
+    e.stopPropagation();
+    setSection(newSection)
+
+    // text for specific page here? 
+
+  } 
+
     return (
       <div className="wrapper">
-      { !game &&
-        <div className="treeview-main">
-          <Tree content="😁" style={treeStyles}>
-            <Tree content="alexei mihalopoulos">
-              <Tree content="about" canHide>
-                <Tree content="work">
-                  <Tree content="hire" style={{ color: '#63b1de' }} />
-                  <Tree content="projects" style={{ color: '#63b1de' }} />
-                  <Tree content="resume" style={{ color: '#63b1de' }} />
-                </Tree>
-                <Tree content="play">
-                  <Tree content="golf" style={{ color: '#63b1de' }} />
-                  <Tree content="interests" style={{ color: '#63b1de' }} />
-                  <Tree content="hobbies">
-                    <Tree content="cooking" style={{ color: '#63b1de' }} />
-                    <Tree content="drinking" style={{ color: '#63b1de' }} />
-                    <Tree content="Barry" style={{ color: '#63b1de' }} />
-                  </Tree>
-                </Tree>
-                <Tree content="who am i" />
-              </Tree>
-            </Tree>
-            <Tree content="more">
-              <Tree content="what's the point" canHide />
-              <Tree content="let's play a game" canHide style={{ color: '#63b1de' }} onClick={startGame} />
-            </Tree>
-          </Tree>
-        </div>
-      }
+        <Menu open={section == null ? true : false} showSection={showSection} startGame={startGame} />
+
+        { section ? (
+          <Page text="la" state={section} />
+        ) : (
+          null
+        )}
       { game &&
         <div>
-          <Game text="want to play a game?" />
+          <Game text="Welcome" />
         </div>
       }
       </div>

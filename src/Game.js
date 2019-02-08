@@ -9,17 +9,42 @@ import Launcher from './Launcher.js'
 function Game(text) {
   const dimensions = useWindowDimensions();
 
+  const gameReducer = (state, action) => {
+    switch (action.type) {
+      case 'CREATE':
+        const launchers = [];
+        // const startX = 15;
+        // const spaceToFill = ( dimensions.width / 15 ) - 2*startX;
+        // const numLaunchers = spaceToFill / 3
+        // for (var i = 0; i < numLaunchers; i++) {
+        //   launchers.push(<Launcher key={i} location={{right: `${( startX + i*3 )}em`}} />)
+        // }
+        return {launchers}
+      default:
+        return state
+    }
+  }
+
+  const [state, dispatch] = useReducer(gameReducer, {launchers: []})
+
   const items = text.text.split('').map( s => {
     return s === ' ' ? '&nbsp;' : s
   })
 
+  useEffect( () => {
+    document.addEventListener("keydown", function startGame(e){
+      dispatch({type: 'CREATE'})
+      document.removeEventListener("keydown", startGame)
+    })
+  }, [])
+
   // const props = useTrail(items.length, { opacity: 1, from: { opacity: 0 } })
+  // {state.launchers}
 
   return (
     <div className="game" style={{ color: 'white', height: dimensions.height, width: dimensions.width, position: 'relative', overflow: 'hidden' }}>
       <GameIntro text={text.text}/>
       <GamePiece />
-      <Launcher />
       <EndGame />
     </div>
   )

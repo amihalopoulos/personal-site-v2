@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import { useSpring, animated } from 'react-spring/hooks';
 import './Game.css'
-import useKeyPress from './keyPressHook'
 
 const Missile = () => {
-
   const [location, setLocation] = useState(0)
 
   useEffect( () => {
@@ -20,10 +18,9 @@ const Missile = () => {
       <div style={{position: 'absolute', bottom: location, right: '50%', height: '1px', width: '1px', backgroundColor: 'white'}}></div>
     )
   }
-
 }
 
-const Launcher = (location) => {
+const Launcher = (config) => {
   const [missiles, setMissiles] = useState([])
   const [props, set] = useSpring( () => ({ bottom: '-10rem' }) )
   const [gunnerProps, setGunner] = useSpring( () => ({
@@ -33,8 +30,9 @@ const Launcher = (location) => {
       '-ms-transform': 'rotate(90deg)',
       'transform': 'rotate(90deg)'
     }))
+
   const styles = {
-    wrapper: {position: 'absolute', right: '50%'},
+    wrapper: {position: 'absolute', right: config.location.right},
     gunner: {height: '3rem', width: '.5rem', 'backgroundColor': 'white', position: 'absolute', bottom: '2rem'},
     base: {height: '2rem', width: '2rem', 'backgroundColor': 'white', position: 'absolute', bottom: 0}
   }
@@ -51,11 +49,10 @@ const Launcher = (location) => {
   }, [])
 
   useEffect( () => {
-    set({bottom: '0'})
 
     const timer = setInterval( () => {
       setMissiles([...missiles, []])
-    }, 700) 
+    }, 1000) 
 
     return () => clearInterval(timer)
   }, [missiles])

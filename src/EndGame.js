@@ -4,8 +4,8 @@ import './Game.css'
 
 const Home = () => {
   return (
-    <div style={{height: '5rem', width: '5rem', 'borderRadius': '50%', 'backgroundColor': 'white', 'position': 'absolute', bottom: '5rem', 'right': '5rem', 'zIndex': '0'}}>
-      <div style={{height: '10px', width: '10px', backgroundColor: 'black', position: 'absolute', 'top': '50%', left: '50%', 'zIndex': '1'}}></div>
+    <div style={{height: '5em', width: '5em', 'borderRadius': '50%', 'backgroundColor': 'white', 'position': 'absolute', bottom: '5em', 'right': '5em', 'zIndex': '0'}}>
+      <div style={{height: '10px', width: '10px', backgroundColor: 'black', position: 'absolute', 'top': '0', left: 0, right: 0, 'margin-left': 'auto', 'margin-right': 'auto', 'zIndex': '1'}}></div>
     </div>
   )
 }

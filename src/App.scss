@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.page{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.hire-me{
+    flex-direction: column;
+    div{
+      padding-bottom: 1vw;
+      .hire-contract{
+        color: rgb(99, 177, 222);
+      }
+    }
+  }
+  &.projects{
+    width: 90vw;
+    float: right;
+    div {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      will-change: transform;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    div > div {
+      color: black;
+      background-color: white;
+      background-size: auto 70%;
+      background-repeat: no-repeat;
+      // background-position: center center;
+      width: 45vh;
+      max-width: 300px;
+      height: 85vh;
+      max-height: 570px;
+      will-change: transform;
+      border-radius: 10px;
+      box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3);
+    }
+  }
+}
