@@ -39,7 +39,7 @@ function Menu(props) {
                 <Tree content="who am i" />
             </Tree>
             <Tree open={false} content="more">
-              <Tree content="what's the point" canHide />
+              { /*<Tree content="what's the point" canHide /> */ }
               <Tree content="let's play a game" canHide style={{ color: '#63b1de' }} onClick={props.startGame} />
             </Tree>
           </Tree>

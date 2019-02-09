@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  overflow: hidden;
+}
+.wrapper{
+  overflow: hidden;
 }
 
 .App-logo {
@@ -32,7 +36,7 @@
 }
 
 .page{
-  width: 100vw;
+  // width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
