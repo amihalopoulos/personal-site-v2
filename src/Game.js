@@ -40,7 +40,7 @@ function Game(text) {
 
   // const props = useTrail(items.length, { opacity: 1, from: { opacity: 0 } })
   // {state.launchers}
-
+  
   return (
     <div className="game" style={{ color: 'white', height: dimensions.height, width: dimensions.width, position: 'relative', overflow: 'hidden' }}>
       <GameIntro text={text.text}/>

@@ -1,10 +1,12 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, useState, useEffect, useReducer } from 'react';
 import './App.scss';
 import { Spring } from 'react-spring'
 import Tree from './Tree'
 import Game from './Game'
 import Menu from './menu'
 import Page from './pages/page'
+import JumboTron from './jumbotron'
+import { Context, initialState, reducer } from "./store";
 // import { useSpring, animated as anim } from 'react-spring'
 
 const treeStyles = {
@@ -24,6 +26,7 @@ const typeStyles = {
 function App() {
   const [game, setGame] = useState(false);
   const [section, setSection] = useState(false);
+  const [store, dispatch] = useReducer(reducer, initialState)
 
   let sectionComponent;
 
@@ -34,26 +37,27 @@ function App() {
   function showSection(e, newSection){
     e.stopPropagation();
     setSection(newSection)
-
     // text for specific page here? 
-
   } 
 
     return (
-      <div className="wrapper">
-        <Menu open={section == null ? true : false} showSection={showSection} startGame={startGame} />
+      <Context.Provider value={{store, dispatch}}>
+        <div className="wrapper">
+          <Menu open={section == null ? true : false} showSection={showSection} startGame={startGame} />
 
-        { section ? (
-          <Page text="la" state={section} />
-        ) : (
-          null
-        )}
-      { game &&
-        <div>
-          <Game text="Welcome" />
+          { section ? (
+            <Page text="la" state={section} />
+          ) : (
+            null
+          )}
+        { game &&
+          <div>
+            <Game text="Welcome" />
+          </div>
+        }
+        <JumboTron className="main-jumbo" text={store.jumbotronText} />
         </div>
-      }
-      </div>
+      </Context.Provider>
     );
 }
 

@@ -8,6 +8,7 @@ const projects = [
 'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/goodthought2.png',
 'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/goodthought1.png',
 'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/deluneticket.png',
+'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/nasa-rovers.png',
 'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/ffdticket.png'
 ];
 
