@@ -110,7 +110,7 @@ export default class Tree extends React.PureComponent {
                   onClick={this.toggleVisibility}
                 />
               )}
-              <span style={{ verticalAlign: 'middle' }}>{content}</span>
+              <span style={{ verticalAlign: 'middle', color: children ? 'white' : '#63b1de' }}>{content}</span>
               <Spring
                 native
                 immediate={immediate}

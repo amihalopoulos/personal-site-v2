@@ -11,7 +11,7 @@ import { Context } from "./store";
 
 const treeStyles = {
   position: 'absolute',
-  "zIndex": 501,
+  zIndex: 501,
   top: 20,
   left: 20,
   color: 'white',
@@ -33,7 +33,7 @@ function Menu(props) {
   }
 
     return (
-      <div className="wrapper">
+      <React.Fragment>
         <div className="treeview-main">
           {/* <Tree width={{width: '100%'}} open={props.open} content="😁" style={treeStyles} onClick={(e) => showSection(e, null)}> */}
             <Tree width={{width: '100%'}} open={false} content="alexei mihalopoulos">
@@ -46,8 +46,8 @@ function Menu(props) {
                   <Tree width={{width: '33%'}} content="golf" style={{ color: '#63b1de' }} onClick={(e) => setJumboText('I like golf')} />
                   <Tree width={{width: '33%'}} content="interests" style={{ color: '#63b1de' }} onClick={(e) => setJumboText('I have interests')} />
                   <Tree width={{width: '33%'}} open={false} content="hobbies">
-                    <Tree width={{width: '33%'}} content="cooking" style={{ color: '#63b1de' }} onClick={(e) => setJumboText('I like to cook pizza & pasta. Ask me to cook for you one day')} />
-                    <Tree width={{width: '33%'}} content="drinking" style={{ color: '#63b1de' }} onClick={(e) => setJumboText('Sometimes I drink. I\'m usually fun when I do.')} />
+                    <Tree width={{width: '33%'}} content="cooking" style={{ color: '#63b1de' }} onClick={(e) => setJumboText('I like to cook pizza & pasta. People generally enjoy eating what I cook. Ask me to cook for you one day')} />
+                    <Tree width={{width: '33%'}} content="drinking" style={{ color: '#63b1de' }} onClick={(e) => setJumboText('Always on the lookout for fun places around the world.')} />
                     <Tree width={{width: '33%'}} content="Barry" style={{ color: '#63b1de' }} onClick={(e) => setJumboText('I have a dog')} />
                   </Tree>
                 </Tree>
@@ -59,7 +59,7 @@ function Menu(props) {
             </Tree>
           {/* </Tree> */}
         </div>
-      </div>
+      </React.Fragment>
     );
 }
 

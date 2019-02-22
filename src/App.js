@@ -26,7 +26,7 @@ function App() {
 
     return (
       <Context.Provider value={{store, dispatch}}>
-        <div className="wrapper">
+        <div className="app-wrapper">
           <Menu open={section == null ? true : false} showSection={showSection} startGame={startGame} />
 
           { section ? (

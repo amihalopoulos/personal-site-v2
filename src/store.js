@@ -1,7 +1,7 @@
 import React from "react";
 
 export const initialState = { 
-  jumbotronText: ''
+  jumbotronText: 'Full stack javascript engineer with a passion for continuous improvement'
 };
 
 export const reducer = (state, action) => {
