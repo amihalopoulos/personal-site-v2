@@ -32,6 +32,8 @@ code {
 .treeview > .toggle {
   pointer-events: all;
   cursor: pointer;
+  color: white;
+  fill: white;
 }
 .treeview > .toggle:hover {
   color: #63b1de;

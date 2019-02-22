@@ -6,11 +6,6 @@
   overflow: hidden;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -20,6 +15,12 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.treelimb {
+  div{
+    // padding: 0 2em;
+  }
 }
 
 .App-link {
@@ -33,6 +34,31 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.treeview-main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: transparent !important;
+  .treeview{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 100px;
+    position: relative;
+  }
+  // .treeview:before {
+  //   content : "";
+  //   position: absolute;
+  //   left    : 50%;
+  //   top  : -10px;
+  //   height  : 1px;
+  //   width   : 100%;  /* or 100px */
+  //   border-top:1px solid magenta;
+  // }
 }
 
 .page{

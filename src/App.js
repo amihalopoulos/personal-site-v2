@@ -7,21 +7,6 @@ import Menu from './menu'
 import Page from './pages/page'
 import JumboTron from './jumbotron'
 import { Context, initialState, reducer } from "./store";
-// import { useSpring, animated as anim } from 'react-spring'
-
-const treeStyles = {
-  position: 'absolute',
-  top: 20,
-  left: 20,
-  color: 'white',
-  fill: 'white',
-  width: '100%',
-}
-
-const typeStyles = {
-  fontSize: '1em',
-  verticalAlign: 'middle',
-}
 
 function App() {
   const [game, setGame] = useState(false);
@@ -37,7 +22,6 @@ function App() {
   function showSection(e, newSection){
     e.stopPropagation();
     setSection(newSection)
-    // text for specific page here? 
   } 
 
     return (

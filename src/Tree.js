@@ -11,6 +11,8 @@ const styles = {
     whiteSpace: 'nowrap',
     overflowX: 'hidden',
     verticalAlign: 'middle',
+    display: 'flex',
+    alignItems: 'flex-start'
   },
   pointer: {
     cursor: 'pointer',
@@ -18,21 +20,33 @@ const styles = {
   toggle: {
     width: '1em',
     height: '1em',
-    marginRight: 10,
+    // marginRight: 10,
     cursor: 'pointer',
     verticalAlign: 'middle',
+    display: 'flex',
+    alignItems: 'flex-start'
+
   },
   type: {
     textTransform: 'uppercase',
     fontFamily: 'monospace',
     fontSize: '0.6em',
     verticalAlign: 'middle',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+
   },
   contents: {
     willChange: 'transform, opacity, height',
-    marginLeft: 6,
-    padding: '4px 0px 0px 14px',
-    borderLeft: '1px dashed rgba(255,255,255,0.4)',
+    // marginLeft: 6,
+    // padding: '4px 0px 0px 14px',
+    // borderLeft: '1px dashed rgba(255,255,255,0.4)',
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    width: '100%'
+
   },
 }
 
@@ -79,7 +93,7 @@ export default class Tree extends React.PureComponent {
       Icons[`${children ? (open ? 'Minus' : 'Plus') : 'Close'}SquareO`]
 
       return (
-            <div style={{ ...styles.tree, ...style, ...styles.pointer }} onClick={onClick} className="treeview">
+            <div style={{...styles.pointer, ...this.props.width}} /* style={{ ...styles.tree, ...style, ...styles.pointer }} */ onClick={onClick} className="treeview">
 
               <Icon
                 className="toggle"
@@ -101,15 +115,15 @@ export default class Tree extends React.PureComponent {
                 native
                 immediate={immediate}
                 config={{ ...config.default, precision: 0.1 }}
-                from={{ height: 0, opacity: 0, transform: 'translate3d(20px,0,0)' }}
+                from={{ height: 0, opacity: 0, transform: 'translate3d(0,-20px,0)' }}
                 to={{
                   height: open ? 'auto' : 0,
                   opacity: open ? 1 : 0,
-                  transform: open ? 'translate3d(0px,0,0)' : 'translate3d(20px,0,0)',
+                  transform: open ? 'translate3d(0px,0,0)' : 'translate3d(0,-20px,0)',
                 }}
                 {...springConfig && springConfig(open)}>
                 {style => (
-                  <animated.div style={{ ...style, ...styles.contents }}>
+                  <animated.div className="treelimb" style={{ ...style, ...styles.contents }}>
                     {children}
                   </animated.div>
                 )}

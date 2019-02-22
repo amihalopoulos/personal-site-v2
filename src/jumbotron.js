@@ -15,7 +15,7 @@ function Jumbotron() {
     display: store.jumbotronText.length ? 'flex' : 'none'
   }
 
-  const props = useTrail(items.length, { config: {tension: 500, friction: 28}, opacity: 1, from: { opacity: .2 } })
+  const props = useTrail(items.length, { config: {tension: 500, friction: 28}, opacity: 1, from: { opacity: 1 } })
 
   return !store.jumbotronText.length ? null : <div style={jumboStyle} className="jumbotron"> { items.map((item, index) => (
     <animated.div key={item.key} style={props[index]} dangerouslySetInnerHTML={{ __html: item}}></animated.div>
