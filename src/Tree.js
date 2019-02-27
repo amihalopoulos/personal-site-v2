@@ -51,9 +51,9 @@ const styles = {
 }
 
 export default class Tree extends React.PureComponent {
-  static defaultProps = { open: false, visible: true, canHide: false }
+  static defaultProps = { isOpen: false, visible: true, canHide: false }
   static propTypes = {
-    open: PropTypes.bool,
+    isOpen: PropTypes.bool,
     visible: PropTypes.bool,
     canHide: PropTypes.bool,
     content: PropTypes.node,
@@ -62,12 +62,12 @@ export default class Tree extends React.PureComponent {
 
   constructor(props) {
     super()
-    this.state = { open: props.open, visible: props.visible, immediate: false }
+    this.state = { isOpen: props.isOpen, visible: props.visible, immediate: false }
   }
 
   toggle = () =>
     this.props.children &&
-    this.setState(state => ({ open: !state.open, immediate: false }))
+    this.setState(state => ({ isOpen: !state.isOpen, immediate: false }))
 
   toggleVisibility = () => {
     this.setState(
@@ -78,7 +78,7 @@ export default class Tree extends React.PureComponent {
 
   componentWillReceiveProps(props) {
     this.setState(state => {
-      return ['open', 'visible'].reduce(
+      return ['isOpen', 'visible'].reduce(
         (acc, val) =>
           this.props[val] !== props[val] ? { ...acc, [val]: props[val] } : acc,
         {}
@@ -87,10 +87,10 @@ export default class Tree extends React.PureComponent {
   }
 
   render() {
-    const { open, visible, immediate } = this.state
+    const { isOpen, visible, immediate } = this.state
     const { children, content, type, style, canHide, springConfig, onClick } = this.props
     const Icon =
-      Icons[`${children ? (open ? 'Minus' : 'Plus') : 'Close'}SquareO`]
+      Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
 
       return (
             <div style={{...styles.pointer, ...this.props.width}} /* style={{ ...styles.tree, ...style, ...styles.pointer }} */ onClick={onClick} className="treeview">
@@ -117,11 +117,11 @@ export default class Tree extends React.PureComponent {
                 config={{ ...config.default, precision: 0.1 }}
                 from={{ height: 0, opacity: 0, transform: 'translate3d(0,-20px,0)' }}
                 to={{
-                  height: open ? 'auto' : 0,
-                  opacity: open ? 1 : 0,
-                  transform: open ? 'translate3d(0px,0,0)' : 'translate3d(0,-20px,0)',
+                  height: isOpen ? 'auto' : 0,
+                  opacity: isOpen ? 1 : 0,
+                  transform: isOpen ? 'translate3d(0px,0,0)' : 'translate3d(0,-20px,0)',
                 }}
-                {...springConfig && springConfig(open)}>
+                {...springConfig && springConfig(isOpen)}>
                 {style => (
                   <animated.div className="treelimb" style={{ ...style, ...styles.contents }}>
                     {children}
