@@ -21,7 +21,7 @@ const projects = [
   },
   {
     name:'De Lune',
-    purpose: 'Custom template for Shopify storefront',
+    purpose: 'Custom ecommerce storefront',
     tech: 'Shopify, Liquid, Javascript',
     url: 'http://www.delune.co'
   },
