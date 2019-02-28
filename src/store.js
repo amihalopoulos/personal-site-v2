@@ -1,7 +1,9 @@
 import React from "react";
 
+const bioText = 'Full stack javascript engineer with a degree in Business/Entrepreneurship. I am a technologist who is product/customer focused. My passion is continuous improvement on my self #learnAndEarn'
+
 export const initialState = { 
-  jumbotronText: 'Full stack javascript engineer with a passion for continuous improvement'
+  jumbotronText: bioText
 };
 
 export const reducer = (state, action) => {
@@ -10,7 +12,7 @@ export const reducer = (state, action) => {
     console.log(action)
       return { ...state, jumbotronText: action.jumbotronText }
     default:
-      return state;
+      return { ...state, jumbotronText: bioText };
   }
 };
 

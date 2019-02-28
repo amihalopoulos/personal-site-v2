@@ -3,14 +3,35 @@ import { useSprings, animated, interpolate } from 'react-spring/hooks'
 import { useGesture } from 'react-with-gesture'
 import '../App.scss';
 
+// const projects = [
+// 'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/goodthought3.png',
+// 'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/goodthought2.png',
+// 'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/goodthought1.png',
+// 'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/deluneticket.png',
+// 'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/nasa-rovers.png',
+// 'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/ffdticket.png'
+// ];
+
 const projects = [
-'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/goodthought3.png',
-'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/goodthought2.png',
-'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/goodthought1.png',
-'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/deluneticket.png',
-'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/nasa-rovers.png',
-'https://s3-us-west-2.amazonaws.com/alexeimihalopoulos.com-photos/ffdticket.png'
-];
+  {
+    name:'alexeimihalopoulos.com',
+    purpose: 'Self promotion',
+    tech: 'Node, react, AWS',
+    url: 'http://www.alexeimihalopoulos.com'
+  },
+  {
+    name:'De Lune',
+    purpose: 'Custom template for Shopify storefront',
+    tech: 'Shopify, Liquid, Javascript',
+    url: 'http://www.delune.co'
+  },
+  {
+    name:'Fantasy Football Dashboard',
+    purpose: 'Dominate my opponents',
+    tech: 'Node.js, Express, React, redux, MongoDB, Oauth2, AWS',
+    url: 'http://www.github.com/amihalopoulos/fantasy-football-analyzer'
+  }
+]
 
 const cards = [
   'https://upload.wikimedia.org/wikipedia/en/f/f5/RWS_Tarot_08_Strength.jpg',
@@ -49,9 +70,27 @@ function ProjectsPage() {
     <div className="page projects">
       {
         props.map(({ x, y, rot, scale }, i) => (
-            <animated.div key={i} style={{ transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`) }}>
+            <animated.div className="animated1" key={i} style={{ transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`) }}>
               {/* This is the card itself, we're binding our gesture to it (and inject its index so we know which is which) */}
-              <animated.div {...bind(i)} style={{ transform: interpolate([rot, scale], trans), backgroundImage: `url(${projects[i]})`  }}> 
+              <animated.div className="animated2" {...bind(i)} style={{ transform: interpolate([rot, scale], trans), backgroundImage: `url(${projects[i]})`  }}> 
+                <div className="project">
+                  <div className="title-value">
+                    <div className="title">Project</div>
+                    <div className="value">{projects[i].name}</div>
+                  </div>
+                  <div className="title-value">
+                    <div className="title">Tech</div>
+                    <div className="value">{projects[i].tech}</div>
+                  </div>
+                  <div className="title-value">
+                    <div className="title">Purpose</div>
+                    <div className="value">{projects[i].purpose}</div>
+                  </div>
+                  <div className="title-value">
+                    <div className="title">Url</div>
+                    <div className="value"><a href={projects[i].url}>link</a></div>
+                  </div>
+                </div>
               </animated.div> 
             </animated.div>
           ))

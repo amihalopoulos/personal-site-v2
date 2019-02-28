@@ -23,24 +23,37 @@ function Menu(props) {
   const [limb1, setLimb1] = useState(false);
   const [limb2, setLimb2] = useState(false);
   const [limb3, setLimb3] = useState(false);
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
 
   function setJumboText(text){
     dispatch({type: 'setJumbotron', jumbotronText: text})
+    closeAllMenuItems()
   }
 
   function showSection(e, page){
     if (page != null) {
       dispatch({type: 'setJumbotron', jumbotronText: ''})
     }
+    closeAllMenuItems()
     props.showSection(e, page)
   }
 
+  function closeAllMenuItems(e){
+
+    setMenuIsOpen(false)
+    setLimb1(false)
+    setLimb2(false)
+    setLimb3(false)
+  }
+
   function handleOpenClose(e, treeId){
-    //tree menu item is clicked
-    //is this already open?
-      // if not, open it and close the others
-    //otherwise close it
     e.stopPropagation()
+
+    if (treeId == 0){
+      showSection(e, null)
+      setMenuIsOpen(!menuIsOpen)
+      dispatch({type: 'setJumbotron', jumbotronText: ''})
+    }
 
     if (treeId == 1) {
       if (limb1) {
@@ -75,7 +88,7 @@ function Menu(props) {
       <React.Fragment>
         <div className="treeview-main">
             {/* <Tree width={{width: '100%'}} isOpen={props.open} content="😁" style={treeStyles} onClick={(e) => showSection(e, null)}></Tree> */}
-          <Tree  width={{width: '100%'}} isOpen={props.open} content="alexei mihalopoulos">
+          <Tree onClick={(e) => handleOpenClose(e, 0)} width={{width: '100%'}} isOpen={menuIsOpen} content="alexei mihalopoulos">
             <Tree onClick={(e) => handleOpenClose(e, 1)} width={{width: '33%'}} isOpen={limb1} content="work">
               <Tree content="hire" style={{ color: '#63b1de' }} onClick={(e) => showSection(e, "hire")} />
               <Tree content="projects" style={{ color: '#63b1de' }} onClick={(e) => showSection(e, "projects")} />
@@ -91,9 +104,9 @@ function Menu(props) {
               </Tree>
             </Tree>
             <Tree onClick={(e) => handleOpenClose(e, 3)} width={{width: '33%'}} isOpen={limb3} content="more">
-              { /*<Tree content="what's the point" canHide /> */ }
-              <Tree width={{width: '50%'}} content="let's play a game" style={{ color: '#63b1de' }} onClick={props.startGame} />
-              <Tree width={{width: '50%'}} content="who am i" />
+              { /*<Tree content="what's the point" canHide /> 
+              <Tree onClick={(e) => closeAllMenuItems(e) } width={{width: '50%'}} content="let's play a game" style={{ color: '#63b1de' }} onClick={props.startGame} />
+              <Tree onClick={(e) => closeAllMenuItems(e) } width={{width: '50%'}} content="who am i" /> */ }
             </Tree>
           </Tree>
         </div>

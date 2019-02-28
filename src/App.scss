@@ -102,7 +102,7 @@
   &.projects{
     width: 90vw;
     float: right;
-    div {
+    .animated1 {
       position: absolute;
       width: 100vw;
       height: 100vh;
@@ -111,8 +111,7 @@
       align-items: center;
       justify-content: center;
     }
-
-    div > div {
+    .animated2 {
       color: black;
       background-color: white;
       background-size: auto 70%;
@@ -124,7 +123,32 @@
       max-height: 570px;
       will-change: transform;
       border-radius: 10px;
+      display: flex;
+      align-items: center;
       box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3);
+    }
+    .project{
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding: 20px 40px;
+      .title-value{
+        position: relative;
+        text-align: left;
+        margin-bottom: 12px;
+        .title{
+          font-size: 18px;
+          font-weight: 800;
+          line-height: 24px;
+        }
+        .value{
+          a{
+            text-decoration: none;
+            color: #357DED;
+            font-weight: 800;
+          }
+        }
+      }
     }
   }
 }
@@ -132,9 +156,10 @@
 .jumbotron{
   // position: absolute;
   margin-top: 100px;
-  width: 70vw;
+  width: 55vw;
   z-index: 500;
   padding: 0 15vw;
+  flex-wrap: wrap;
   // height: 100vh;
   align-items: center;
   justify-content: center;
